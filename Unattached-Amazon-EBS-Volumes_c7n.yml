@@ -1,1 +1,21 @@
-.
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Unattached-Amazon-EBS-Volumes
+    resource: ebs
+    comment: Check if exists unattached disks
+    filters:
+      - Attachments: []
+      - State: available
+    actions:
+      - type: notify
+        <<: *notify-var
+        

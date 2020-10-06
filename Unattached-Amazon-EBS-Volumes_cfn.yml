@@ -7,7 +7,7 @@ Parameters:
   ResourceName:
     Type: String
     Description: "Name that will be using in disks and topic"
-    Default: FinOps-C7N-EBS-Example
+    Default: FinOps-C7N-Unattached-Amazon-EBS-Volumes
 
   DiskSize:
     Type: String
@@ -54,3 +54,9 @@ Resources:
         - Endpoint: !Ref Email2Notify
           Protocol: email
       TopicName: !Ref ResourceName
+
+Outputs:
+
+  NotificationARN:
+    Description: SNS ARN to use in your C7N police
+    Value: !Ref NotificationTopic
