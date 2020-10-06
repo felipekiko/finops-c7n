@@ -24,6 +24,18 @@ https://github.com/cloud-custodian/cloud-custodian/tree/master/tools/c7n_mailer
 This police check if you have some disks not attached in your account
 The CFN file create 2 disks and 1 SNS to send default notification
 
+## To Do
+
+- Low Utilization Amazon EC2 Instances
+- Idle Load Balancers
+- Underutilized Amazon EBS Volumes
+- Unassociated Elastic IP Addresses
+- Amazon Route 53 Latency Resource Record Sets
+- Amazon RDS Idle DB Instances
+- Underutilized Amazon Redshift Clusters
+- Amazon EC2 Reserved Instance Lease Expiration
+- Amazon EC2 Reserved Instances Optimization
+
 ## References
 
 Cloud Custodian: https://cloudcustodian.io/
