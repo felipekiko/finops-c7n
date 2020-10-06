@@ -2,21 +2,30 @@
 
 Some custodian policies to use in FinOps monitoring
 
-# EBS
+## Notification
 
-## Unattached Amazon EBS Volumes
+All examples has a AWS CloudFormation template, that will create a SNS topic to test your notification, to check if your police are executed with success, but this message will be delivery in a unreable format (zlib with base64)
 
-This police check if you have some disks not attached in your account
+You can uncompress the text, using some zlib and base64 libs, like this example in Python:
 
-The CFN file create 2 disks and 1 SNS to send default notification, only to test and see if police works
-To uncompress the text that you will received, you need uncompress zlib in base64
-
-In Python you can do this:
 ```python
 zlib.decompress(base64.b64decode(msg))
 ```
 
-And some online tools do this, like this "http://www.unit-conversion.info/texttools/compress" but be carreful, because the message has some sensetive data, like your AWS Account ID
+And some online tools do this to, eg.: "http://www.unit-conversion.info/texttools/compress" but be carreful...because the message has some sensetive data, like your AWS Account ID
 
-But, if you want create a email or other way notification, I recomend look at C7N-Mailer:
+If you want create a email or other way notification, I recomend look at C7N-Mailer:
 https://github.com/cloud-custodian/cloud-custodian/tree/master/tools/c7n_mailer
+
+## EBS
+
+### Unattached Amazon EBS Volumes
+
+This police check if you have some disks not attached in your account
+The CFN file create 2 disks and 1 SNS to send default notification
+
+## References
+
+Cloud Custodian: https://cloudcustodian.io/
+
+AWS CloudFormation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide
