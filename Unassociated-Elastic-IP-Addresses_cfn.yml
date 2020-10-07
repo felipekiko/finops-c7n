@@ -33,5 +33,5 @@ Resources:
 Outputs:
 
   NotificationARN:
-    Description: SNS ARN to use in your C7N police
+    Description: SNS ARN to use in your C7N policy
     Value: !Ref NotificationTopic

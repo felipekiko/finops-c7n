@@ -4,7 +4,7 @@ Some custodian policies to use in FinOps monitoring
 
 ## Notification
 
-All examples has a AWS CloudFormation template, that will create a SNS topic to test your notification, to check if your police are executed with success, but this message will be delivery in a unreable format (zlib with base64)
+All examples has a AWS CloudFormation template, that will create a SNS topic to test your notification, to check if your policy are executed with success, but this message will be delivery in a unreable format (zlib with base64)
 
 You can uncompress the text, using some zlib and base64 libs, like this example in Python:
 
@@ -21,12 +21,12 @@ https://github.com/cloud-custodian/cloud-custodian/tree/master/tools/c7n_mailer
 
 ### Unattached Amazon EBS Volumes
 
-This police check if you have some disks not attached in your account
+This policy check if you have some disks not attached in your account
 The CFN file create 2 disks and 1 SNS to send default notification
 
 ### Unassociated Elastic IP Addresses
 
-This police check if have some Elastic IP unassociated
+This policy check if have some Elastic IP unassociated
 The CFN file create 2 EIP and 1 SNS to send default notification
 
 ## To Do
