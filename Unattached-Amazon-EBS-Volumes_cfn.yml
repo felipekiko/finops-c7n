@@ -6,7 +6,7 @@ Parameters:
 
   ResourceName:
     Type: String
-    Description: "Name that will be using in disks and topic"
+    Description: "Name that will be using in resources"
     Default: FinOps-C7N-Unattached-Amazon-EBS-Volumes
 
   DiskSize:

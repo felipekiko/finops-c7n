@@ -10,8 +10,8 @@ vars:
 policies:
 
   - name: Unattached-Amazon-EBS-Volumes
-    resource: ebs
     comment: Check if exists unattached disks
+    resource: ebs
     filters:
       - Attachments: []
       - State: available
