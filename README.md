@@ -31,7 +31,6 @@ The CFN file create 2 EIP and 1 SNS to send default notification
 
 ## To Do
 
-- Low Utilization Amazon EC2 Instances
 - Idle Load Balancers
 - Underutilized Amazon EBS Volumes
 - Amazon Route 53 Latency Resource Record Sets
@@ -41,6 +40,8 @@ The CFN file create 2 EIP and 1 SNS to send default notification
 - Amazon EC2 Reserved Instances Optimization
 
 ## Doing
+
+- Low Utilization Amazon EC2 Instances
 
 ## References
 
