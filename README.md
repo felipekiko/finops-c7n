@@ -24,6 +24,11 @@ https://github.com/cloud-custodian/cloud-custodian/tree/master/tools/c7n_mailer
 This police check if you have some disks not attached in your account
 The CFN file create 2 disks and 1 SNS to send default notification
 
+### Unassociated Elastic IP Addresses
+
+This police check if have some Elastic IP unassociated
+The CFN file create 2 EIP and 1 SNS to send default notification
+
 ## To Do
 
 - Low Utilization Amazon EC2 Instances
@@ -36,8 +41,6 @@ The CFN file create 2 disks and 1 SNS to send default notification
 - Amazon EC2 Reserved Instances Optimization
 
 ## Doing
-
-- Unassociated Elastic IP Addresses
 
 ## References
 

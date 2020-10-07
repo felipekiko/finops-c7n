@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "Create 2 EIP unassociated and 1 SNS to using in Custodian examples"
+
+Parameters:
+
+  ResourceName:
+    Type: String
+    Description: "Name that will be using in resources"
+    Default: FinOps-C7N-Unassociated-Elastic-IP-Addresses
+
+  Email2Notify:
+    Type: String
+    Description: "Email to notify"
+
+Resources:
+
+  EIPOne:
+    Type: AWS::EC2::EIP
+
+  EIPTwo:
+    Type: AWS::EC2::EIP
+
+  NotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: !Ref ResourceName
+      Subscription: 
+        - Endpoint: !Ref Email2Notify
+          Protocol: email
+      TopicName: !Ref ResourceName
+
+Outputs:
+
+  NotificationARN:
+    Description: SNS ARN to use in your C7N police
+    Value: !Ref NotificationTopic
