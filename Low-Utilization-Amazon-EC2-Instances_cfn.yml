@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "Create 1 EC2 and 1 SNS to using in Custodian examples"
+
+Parameters:
+
+  ResourceName:
+    Type: String
+    Description: "Name that will be using in resources"
+    Default: FinOps-C7N-Low-Utilization-Amazon-EC2-Instances
+
+  Email2Notify:
+    Type: String
+    Description: "Email to notify"
+
+  SubnetID:
+    Type: AWS::EC2::Subnet::Id
+    Description: "Your Subnet"
+
+Resources:
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: ami-0947d2ba12ee1ff75
+      InstanceType: t2.micro
+      SubnetId: !Ref SubnetID
+      Tags:
+        - Key: Name
+          Value: !Ref ResourceName
+
+  NotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: !Ref ResourceName
+      Subscription: 
+        - Endpoint: !Ref Email2Notify
+          Protocol: email
+      TopicName: !Ref ResourceName
+
+Outputs:
+
+  NotificationARN:
+    Description: SNS ARN to use in your C7N policy
+    Value: !Ref NotificationTopic

@@ -1,0 +1,33 @@
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Low-Utilization-Amazon-EC2-Instances
+    comment: Checks if you have any instance with low utilization, based on CPU metrics
+    resource: ec2
+    filters:
+      - type: value
+        key: State.Name
+        value: running
+      - type: value
+        key: LaunchTime
+        value_type: age
+        value: 30
+        op: greater-than
+      - type: metrics
+        name: CPUUtilization
+        days: 30
+        period: 86400
+        value: 20
+        op: less-than
+    actions:
+      - type: notify
+        <<: *notify-var
+        
