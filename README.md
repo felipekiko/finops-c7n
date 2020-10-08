@@ -36,7 +36,6 @@ The CFN file create 1 EC2 and 1 SNS to send default notification, but to test yo
 
 ## To Do
 
-- Idle Load Balancers
 - Underutilized Amazon EBS Volumes
 - Amazon Route 53 Latency Resource Record Sets
 - Amazon RDS Idle DB Instances
@@ -45,6 +44,8 @@ The CFN file create 1 EC2 and 1 SNS to send default notification, but to test yo
 - Amazon EC2 Reserved Instances Optimization
 
 ## Doing
+
+- Idle Load Balancers
 
 ## References
 
