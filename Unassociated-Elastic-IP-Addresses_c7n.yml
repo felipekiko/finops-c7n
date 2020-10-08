@@ -1,0 +1,21 @@
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Unassociated-Elastic-IP-Addresses
+    comment: Checks if exists unassociated EIP
+    resource: network-addr
+    filters:
+      - type: value
+        key: AllocationId
+        value: absent
+    actions:
+      - type: notify
+        <<: *notify-var
