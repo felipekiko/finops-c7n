@@ -46,9 +46,6 @@ The CFN file create 1 Classic Load Balancer, 1 Application Load Balancer, 1 Netw
 - Underutilized Amazon Redshift Clusters
 - Amazon EC2 Reserved Instance Lease Expiration
 - Amazon EC2 Reserved Instances Optimization
-
-## Doing
-
 - Underutilized Amazon EBS Volumes
 
 ## References
