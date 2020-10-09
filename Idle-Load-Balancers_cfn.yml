@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "Create 1 Application Load Balancer, 1 Network Load Balancer, 1 Classic Load Balancer and 1 SNS to using in Custodian examples"
+
+Parameters:
+
+  ResourceName:
+    Type: String
+    Description: "Name that will be using in resources"
+    Default: FinOps-C7N-Idle-LB
+
+  Email2Notify:
+    Type: String
+    Description: "Email to notify"
+
+  SubnetID:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: "Your Subnet"
+
+Resources:
+
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: 
+        !Join
+          - '-'
+          - - !Ref ResourceName
+            - 'ALB'
+      Type: application
+      Subnets: !Ref SubnetID
+
+  NetworkLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: 
+        !Join
+          - '-'
+          - - !Ref ResourceName
+            - 'NLB'
+      Type: network
+      Subnets: !Ref SubnetID
+
+  ClassicLoadBalancer:
+    Type: AWS::ElasticLoadBalancing::LoadBalancer
+    Properties:
+      LoadBalancerName:
+        !Join
+          - '-'
+          - - !Ref ResourceName
+            - 'CLB'
+      Listeners: 
+        - InstancePort: 80
+          LoadBalancerPort: 80
+          Protocol: HTTP
+      Subnets: !Ref SubnetID
+
+  NotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: !Ref ResourceName
+      Subscription: 
+        - Endpoint: !Ref Email2Notify
+          Protocol: email
+      TopicName: !Ref ResourceName
+
+Outputs:
+
+  NotificationARN:
+    Description: SNS ARN to use in your C7N policy
+    Value: !Ref NotificationTopic

@@ -1,0 +1,62 @@
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Idle-Load-Balancers-Classic
+    comment: Checks if you have any load balancer with low utilization
+    resource: elb
+    filters:
+      - type: metrics
+        name: RequestCount
+        statistics: Sum
+        days: 30
+        value: 10
+        missing-value: 0
+        op: less-than
+    actions:
+      - type: notify
+        <<: *notify-var
+
+  - name: Idle-Load-Balancers-Network
+    comment: Checks if you have any load balancer with low utilization, based on new flow
+    resource: app-elb
+    filters:
+      - type: value
+        key: Type
+        value: network
+      - type: metrics
+        name: NewFlowCount
+        statistics: Sum
+        days: 30
+        value: 10
+        missing-value: 0
+        op: less-than
+    actions:
+      - type: notify
+        <<: *notify-var
+
+  - name: Idle-Load-Balancers-Application
+    comment: Checks if you have any load balancer with low utilization, based on requests
+    resource: app-elb
+    filters:
+      - type: value
+        key: Type
+        value: application
+      - type: metrics
+        name: RequestCount
+        statistics: Sum
+        days: 30
+        value: 10
+        missing-value: 0
+        op: less-than
+    actions:
+      - type: notify
+        <<: *notify-var
+
