@@ -41,12 +41,13 @@ The CFN file create 1 Classic Load Balancer, 1 Application Load Balancer, 1 Netw
 
 ## To Do
 
-- Amazon Route 53 Latency Resource Record Sets
 - Amazon RDS Idle DB Instances
+- Underutilized Amazon EBS Volumes
 - Underutilized Amazon Redshift Clusters
+
+- Amazon Route 53 Latency Resource Record Sets
 - Amazon EC2 Reserved Instance Lease Expiration
 - Amazon EC2 Reserved Instances Optimization
-- Underutilized Amazon EBS Volumes
 
 ## References
 
