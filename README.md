@@ -34,9 +34,13 @@ The CFN file create 2 EIP and 1 SNS to send default notification
 This policy checks if have some ECS with low CPU utilization, and you can configure with your thresholds, changing the instance age days to and CPU percent
 The CFN file create 1 EC2 and 1 SNS to send default notification, but to test your policy, you need to adapt it, changing the days to 0
 
+### Idle Load Balancers
+
+This policy checks if have some Load Balancer (Application, Network and Classic) with low utilizantion, and you can configure with your thresholds, changing the instance age days to and requests count
+The CFN file create 1 Classic Load Balancer, 1 Application Load Balancer, 1 Network Load Balancer and 1 SNS to send default notification, but to test your policy, you need to adapt it, changing the days to 0
+
 ## To Do
 
-- Underutilized Amazon EBS Volumes
 - Amazon Route 53 Latency Resource Record Sets
 - Amazon RDS Idle DB Instances
 - Underutilized Amazon Redshift Clusters
@@ -45,7 +49,7 @@ The CFN file create 1 EC2 and 1 SNS to send default notification, but to test yo
 
 ## Doing
 
-- Idle Load Balancers
+- Underutilized Amazon EBS Volumes
 
 ## References
 
