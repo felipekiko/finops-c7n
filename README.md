@@ -17,7 +17,7 @@ And some online tools do this too, eg.: "http://www.unit-conversion.info/texttoo
 If you want to create an email or other way notification, I recommend look at C7N-Mailer:
 https://github.com/cloud-custodian/cloud-custodian/tree/master/tools/c7n_mailer
 
-## EBS
+## Policy
 
 ### Unattached Amazon EBS Volumes
 
