@@ -44,9 +44,13 @@ The CFN file create 1 Classic Load Balancer, 1 Application Load Balancer, 1 Netw
 This policy checks if have some RDS with low CPU utilization, and you can configure with your thresholds, changing the instance age days to and CPU percent
 The CFN file create 1 RDS instance with a SubnetGroup and 1 SNS to send default notification, but to test your policy, you need to adapt it, changing the days to 0
 
+### Underutilized Amazon EBS Volumes
+
+This policy check if you have some disks that are underutilized
+The CFN file create 1 instance with 1 disk and 1 SNS to send default notification, to testing, you need to comment on the age of the disk and decrease the value of the threshold
+
 ## To Do
 
-- Underutilized Amazon EBS Volumes
 - Underutilized Amazon Redshift Clusters
 - Amazon Route 53 Latency Resource Record Sets
 - Amazon EC2 Reserved Instance Lease Expiration

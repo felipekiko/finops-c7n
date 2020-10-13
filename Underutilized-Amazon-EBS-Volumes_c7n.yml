@@ -1,0 +1,30 @@
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Underutilized-Amazon-EBS-Volumes
+    comment: Checks if you have any volume with low utilization, based on CPU metrics
+    resource: ebs
+    filters:
+      - type: value
+        key: CreateTime
+        value_type: age
+        value: 30
+        op: greater-than
+      - type: metrics
+        name: VolumeIdleTime
+        statistics: Sum
+        days: 30
+        period: 86400
+        value: 82080 # 95%
+        op: greater-than
+    actions:
+      - type: notify
+        <<: *notify-var
