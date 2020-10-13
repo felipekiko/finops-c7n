@@ -39,12 +39,15 @@ The CFN file create 1 EC2 and 1 SNS to send default notification, but to test yo
 This policy checks if have some Load Balancer (Application, Network and Classic) with low utilizantion, and you can configure with your thresholds, changing the instance age days to and requests count
 The CFN file create 1 Classic Load Balancer, 1 Application Load Balancer, 1 Network Load Balancer and 1 SNS to send default notification, but to test your policy, you need to adapt it, changing the days to 0
 
+### Amazon RDS Idle DB Instances
+
+This policy checks if have some RDS with low CPU utilization, and you can configure with your thresholds, changing the instance age days to and CPU percent
+The CFN file create 1 RDS instance with a SubnetGroup and 1 SNS to send default notification, but to test your policy, you need to adapt it, changing the days to 0
+
 ## To Do
 
-- Amazon RDS Idle DB Instances
 - Underutilized Amazon EBS Volumes
 - Underutilized Amazon Redshift Clusters
-
 - Amazon Route 53 Latency Resource Record Sets
 - Amazon EC2 Reserved Instance Lease Expiration
 - Amazon EC2 Reserved Instances Optimization

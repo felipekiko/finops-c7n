@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "Create 1 RDS Instance and 1 SNS to using in Custodian examples"
+
+Parameters:
+
+  ResourceName:
+    Type: String
+    Description: "Name that will be using in resources"
+    Default: FinOps-C7N-Amazon-RDS-Idle-DB-Instances
+
+  Email2Notify:
+    Type: String
+    Description: "Email to notify"
+
+  SecurityGroupsID:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+    Description: "Your Security Groups"
+
+  SubnetID:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: "Your Subnets"
+
+Resources:
+
+  RDSInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      StorageType: gp2
+      DBInstanceClass: db.t3.small
+      DBInstanceIdentifier: !Ref ResourceName
+      Engine: mysql
+      MasterUsername: c7nmasteruser
+      MasterUserPassword: c7nmasteruser
+      DBSubnetGroupName: !Ref RDSInstanceSubnetGroup
+      VPCSecurityGroups: !Ref SecurityGroupsID
+
+  RDSInstanceSubnetGroup:
+    Type: "AWS::RDS::DBSubnetGroup"
+    Properties:
+      DBSubnetGroupDescription: "SubnetGroup created to testing C7N policies"
+      SubnetIds: !Ref SubnetID
+
+  NotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: !Ref ResourceName
+      Subscription: 
+        - Endpoint: !Ref Email2Notify
+          Protocol: email
+      TopicName: !Ref ResourceName
+
+Outputs:
+
+  NotificationARN:
+    Description: SNS ARN to use in your C7N policy
+    Value: !Ref NotificationTopic
