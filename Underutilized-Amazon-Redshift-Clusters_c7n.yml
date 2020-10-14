@@ -1,0 +1,33 @@
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Underutilized-Amazon-Redshift-Clusters
+    comment: Checks if you have any redshift instance with low utilization, based on CPU metrics
+    resource: redshift
+    filters:
+      - type: value
+        key: ClusterStatus
+        value: available
+      - type: value
+        key: ClusterCreateTime
+        value_type: age
+        value: 30
+        op: greater-than
+      - type: metrics
+        name: CPUUtilization
+        days: 30
+        period: 86400
+        value: 10
+        op: less-than
+    actions:
+      - type: notify
+        <<: *notify-var
+        
