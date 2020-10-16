@@ -14,7 +14,7 @@ policies:
     resource: network-addr
     filters:
       - type: value
-        key: AllocationId
+        key: AssociationId
         value: absent
     actions:
       - type: notify
