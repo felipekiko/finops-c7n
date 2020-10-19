@@ -56,6 +56,10 @@ The CFN file create 1 Redshift instance with a SubnetGroup and 1 SNS to send def
 
 ## To Do
 
+- EBS storage on wrong tier
+- Orphaned snapshots
+- Instances with wrong families
+- Older Snapshots
 - Amazon Route 53 Latency Resource Record Sets
 - Amazon EC2 Reserved Instance Lease Expiration
 - Amazon EC2 Reserved Instances Optimization
