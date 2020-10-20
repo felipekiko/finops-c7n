@@ -54,10 +54,14 @@ The CFN file create 1 instance with 1 disk and 1 SNS to send default notificatio
 This policy checks if have some Redshift with low CPU utilization, and you can configure with your thresholds, changing the instance age days to and CPU percent
 The CFN file create 1 Redshift instance with a SubnetGroup and 1 SNS to send default notification, but to test your policy, you need to adapt it, changing the days to 0
 
+### Orphaned Snapshots
+
+This policy checks if have some snapshot that with no associate with no one EC2
+There no CFN file, but you can use the "Underutilized Amazon EBS Volumes" template to create one and after create a snapshot
+
 ## To Do
 
 - EBS storage on wrong tier
-- Orphaned snapshots
 - Instances with wrong families
 - Older Snapshots
 - Amazon Route 53 Latency Resource Record Sets

@@ -1,0 +1,20 @@
+vars:
+
+  notify-var: &notify-var
+    - to:
+        - resource-owner
+      transport:
+        type: sns
+        topic: YOUR-SNS-ARN
+
+policies:
+
+  - name: Orphaned-Snapshots
+    comment: Checks if exists Orphaned Snapshots
+    resource: ebs-snapshot
+    filters:
+      - type: unused
+        value: true
+    actions:
+      - type: notify
+        <<: *notify-var
