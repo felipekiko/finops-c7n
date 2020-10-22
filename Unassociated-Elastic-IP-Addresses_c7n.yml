@@ -15,7 +15,10 @@ policies:
     filters:
       - type: value
         key: AssociationId
-        value: absent
+        value: empty
+      - type: value
+        key: InstanceId
+        value: empty
     actions:
       - type: notify
         <<: *notify-var
