@@ -15,6 +15,14 @@ policies:
     filters:
       - type: unused
         value: true
+      - type: value
+        key: Progress
+        value: "100%"
+      - type: value
+        key: StartTime
+        value_type: age
+        value: 30
+        op: greater-than
     actions:
       - type: notify
         <<: *notify-var
