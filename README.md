@@ -1,6 +1,6 @@
 # FinOps and C7N
 
-Some custodian policies to use in FinOps monitoring
+Some custodian policies to use in FinOps monitoring  
 My Custodian Article: https://felipekiko.medium.com/cloud-precisamos-falar-de-limites-parte-1-b048a11c1dc5
 
 ## Notification
